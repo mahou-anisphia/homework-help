@@ -2,9 +2,9 @@
   <div id="name-app" class="container">
     <div class="row justify-content-center">
       <add-request @add="addItem" />
-      <search-request />
+      <search-request @searchkey="searchRequest" />
       <request-list
-        :requests="requests"
+        :requests="searchReqs"
         @remove="removeData"
         @edit="editReq"
       ></request-list>
@@ -28,6 +28,7 @@ export default {
       requests: [],
       reqIndex: 0,
       reqHideDetails: false,
+      searchTerm: "",
     };
   },
   components: {
@@ -61,6 +62,24 @@ export default {
       (request.reqIndex = this.reqIndex),
         this.reqIndex++,
         this.requests.push(request);
+    },
+    searchRequest: function (key) {
+      this.searchTerm = key;
+    },
+  },
+  computed: {
+    searchReqs: function () {
+      return this.requests.filter((item) => {
+        return (
+          item.assignmentName
+            .toLowerCase()
+            .match(this.searchTerm.toLowerCase()) ||
+          item.student.toLowerCase().match(this.searchTerm.toLowerCase()) ||
+          item.assignmentNotes
+            .toLowerCase()
+            .match(this.searchTerm.toLowerCase())
+        );
+      });
     },
   },
 };

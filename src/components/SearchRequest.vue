@@ -7,6 +7,7 @@
         type="text"
         class="form-control"
         aria-label="Search Requests"
+        v-model="searchTerm"
       />
 
       <div class="input-group-append">
@@ -85,6 +86,11 @@ export default {
   },
   components: {
     FontAwesomeIcon,
+  },
+  watch: {
+    searchTerm: function () {
+      this.$emit("searchkey", this.searchTerm);
+    },
   },
 };
 </script>
