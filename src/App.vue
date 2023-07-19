@@ -6,6 +6,8 @@
         @searchkey="searchRequest"
         :srcKey="filterKey"
         :srcDir="filterDirection"
+        @requestKey="changeKey"
+        @requestDir="changeDir"
       />
       <request-list
         :requests="filtered"
@@ -71,6 +73,12 @@ export default {
     },
     searchRequest: function (key) {
       this.searchTerm = key;
+    },
+    changeKey: function (val) {
+      this.filterKey = val;
+    },
+    changeDir: function (val) {
+      this.filterDirection = val;
     },
   },
   computed: {

@@ -27,6 +27,7 @@
             href="#"
             class="dropdown-item d-flex justify-content-between"
             id="classCode"
+            @click="$emit('requestKey', 'classCode')"
           >
             Class's Code
             <font-awesome-icon icon="check" v-if="srcKey === 'classCode'" />
@@ -36,6 +37,7 @@
             class="dropdown-item d-flex justify-content-between"
             href="#"
             id="receivedDate"
+            @click="$emit('requestKey', 'receivedDate')"
           >
             Date
             <font-awesome-icon icon="check" v-if="srcKey === 'receivedDate'" />
@@ -45,6 +47,7 @@
             href="#"
             class="dropdown-item d-flex justify-content-between"
             id="student"
+            @click="$emit('requestKey', 'student')"
           >
             Student
             <font-awesome-icon icon="check" v-if="srcKey === 'student'" />
@@ -56,6 +59,7 @@
             class="dropdown-item d-flex justify-content-between"
             href="#"
             id="asc"
+            @click="$emit('requestDir', 'asc')"
           >
             Asc
             <font-awesome-icon icon="check" v-if="srcDir === 'asc'" />
@@ -65,6 +69,7 @@
             class="dropdown-item d-flex justify-content-between"
             href="#"
             id="desc"
+            @click="$emit('requestDir', 'desc')"
           >
             Desc
             <font-awesome-icon icon="check" v-if="srcDir === 'desc'" />
