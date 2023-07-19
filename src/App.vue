@@ -2,9 +2,13 @@
   <div id="name-app" class="container">
     <div class="row justify-content-center">
       <add-request @add="addItem" />
-      <search-request @searchkey="searchRequest" />
+      <search-request
+        @searchkey="searchRequest"
+        :srcKey="filterKey"
+        :srcDir="filterDirection"
+      />
       <request-list
-        :requests="searchReqs"
+        :requests="filtered"
         @remove="removeData"
         @edit="editReq"
       ></request-list>
@@ -29,6 +33,8 @@ export default {
       reqIndex: 0,
       reqHideDetails: false,
       searchTerm: "",
+      filterKey: "classCode",
+      filterDirection: "asc",
     };
   },
   components: {
@@ -80,6 +86,15 @@ export default {
             .match(this.searchTerm.toLowerCase())
         );
       });
+    },
+    filtered: function () {
+      return _.orderBy(
+        this.searchReqs,
+        (item) => {
+          return item[this.filterKey].toLowerCase();
+        },
+        this.filterDirection
+      );
     },
   },
 };

@@ -26,10 +26,10 @@
           <a
             href="#"
             class="dropdown-item d-flex justify-content-between"
-            id="assignmentName"
+            id="classCode"
           >
-            Asg. Name
-            <font-awesome-icon icon="check" />
+            Class's Code
+            <font-awesome-icon icon="check" v-if="srcKey === 'classCode'" />
           </a>
 
           <a
@@ -38,7 +38,7 @@
             id="receivedDate"
           >
             Date
-            <font-awesome-icon icon="check" />
+            <font-awesome-icon icon="check" v-if="srcKey === 'receivedDate'" />
           </a>
 
           <a
@@ -47,7 +47,7 @@
             id="student"
           >
             Student
-            <font-awesome-icon icon="check" />
+            <font-awesome-icon icon="check" v-if="srcKey === 'student'" />
           </a>
 
           <div class="dropdown-divider" role="separator"></div>
@@ -58,7 +58,7 @@
             id="asc"
           >
             Asc
-            <font-awesome-icon icon="check" />
+            <font-awesome-icon icon="check" v-if="srcDir === 'asc'" />
           </a>
 
           <a
@@ -67,7 +67,7 @@
             id="desc"
           >
             Desc
-            <font-awesome-icon icon="check" />
+            <font-awesome-icon icon="check" v-if="srcDir === 'desc'" />
           </a>
         </div>
       </div>
@@ -92,5 +92,6 @@ export default {
       this.$emit("searchkey", this.searchTerm);
     },
   },
+  props: ["srcKey", "srcDir"],
 };
 </script>
