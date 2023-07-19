@@ -10,7 +10,7 @@
 
       <Collapse :when="!hidepanel" class="card-cover">
         <div class="card-body">
-          <form id="reqForm">
+          <form id="reqForm" @submit.prevent="requestAdd">
             <div class="form-group form-row">
               <label
                 class="col-md-2 col-form-label text-md-right"
@@ -22,6 +22,7 @@
                   type="text"
                   class="form-control"
                   name="classCode"
+                  v-model="formData.classCode"
                   id="classCode"
                   placeholder="Course's Code / Class's Code"
                 />
@@ -38,6 +39,7 @@
                   type="number"
                   class="form-control"
                   name="assignmentValue"
+                  v-model="formData.assignmentValue"
                   id="assignmentValue"
                   placeholder="Pre-paid fee"
                 />
@@ -54,6 +56,7 @@
                   type="text"
                   class="form-control"
                   name="assignmentName"
+                  v-model="formData.assignmentName"
                   id="assignmentName"
                   placeholder="Assignment's Name"
                 />
@@ -68,6 +71,8 @@
                   type="text"
                   class="form-control"
                   id="student"
+                  name="student"
+                  v-model="formData.student"
                   placeholder="Student"
                 />
               </div>
@@ -79,7 +84,13 @@
                 >Date</label
               >
               <div class="col-md-4">
-                <input type="date" class="form-control" id="receivedDate" />
+                <input
+                  type="date"
+                  class="form-control"
+                  id="receivedDate"
+                  name="receivedDate"
+                  v-model="formData.receivedDate"
+                />
               </div>
               <label
                 class="col-md-2 col-form-label text-md-right"
@@ -91,6 +102,7 @@
                   type="time"
                   class="form-control"
                   name="receivedTime"
+                  v-model="formData.receivedTime"
                   id="receivedTime"
                 />
               </div>
@@ -103,6 +115,7 @@
                 <textarea
                   class="form-control"
                   name="assignmentNotes"
+                  v-model="formData.assignmentNotes"
                   id="assignmentNotes"
                   rows="4"
                   cols="50"
@@ -119,6 +132,7 @@
                   type="text"
                   class="form-control"
                   name="method"
+                  v-model="formData.method"
                   id="method"
                   placeholder="Method of complete"
                 />
@@ -146,11 +160,26 @@ export default {
   data() {
     return {
       hidepanel: true,
+      formData: {},
     };
   },
   components: {
     FontAwesomeIcon,
     Collapse,
+  },
+  methods: {
+    requestAdd: function () {
+      this.formData = {
+        classCode: this.formData.classCode,
+        assignmentValue: this.formData.assignmentValue,
+        assignmentName: this.formData.assignmentName,
+        student: this.formData.student,
+        receivedDate:
+          this.formData.receivedDate + " " + this.formData.receivedTime,
+        assignmentNotes: this.formData.assignmentNotes,
+        method: this.formData.method,
+      };
+    },
   },
 };
 </script>
