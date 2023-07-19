@@ -179,6 +179,9 @@ export default {
         assignmentNotes: this.formData.assignmentNotes,
         method: this.formData.method,
       };
+      this.$emit("add", this.formData),
+        (this.formData = {}),
+        (this.hidepanel = true);
     },
   },
 };

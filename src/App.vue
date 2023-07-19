@@ -1,7 +1,7 @@
 <template>
   <div id="name-app" class="container">
     <div class="row justify-content-center">
-      <add-request />
+      <add-request @add="addItem" />
       <request-list
         :requests="requests"
         @remove="removeData"
@@ -53,6 +53,11 @@ export default {
         reqIndex: id,
       });
       this.requests[reqIndex][field] = text;
+    },
+    addItem: function (request) {
+      (request.reqIndex = this.reqIndex),
+        this.reqIndex++,
+        this.requests.push(request);
     },
   },
 };
