@@ -1,26 +1,65 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="name-app" class="container">
+    <div class="row justify-content-center">
+      <add-request />
+      <request-list
+        :requests="requests"
+        @remove="removeData"
+        @edit="editReq"
+      ></request-list>
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+//use for import from file export multiple modules
+import RequestList from "./components/RequestList.vue";
+import AddRequest from "./components/AddRequest.vue";
+//use for import file export 1 module or catch the default export; .vue is optional
+import axios from "axios";
+import _ from "lodash";
 
 export default {
-  name: 'App',
+  name: "nameApp",
+  data() {
+    return {
+      requests: [],
+      reqIndex: 0,
+      reqHideDetails: false,
+    };
+  },
   components: {
-    HelloWorld
-  }
-}
+    RequestList,
+    AddRequest,
+  },
+  mounted() {
+    axios.get("./data/data.json").then(
+      (response) =>
+        (this.requests = response.data.map((item) => {
+          item.reqIndex = this.reqIndex;
+          item.reqHideDetails = this.reqHideDetails;
+          this.reqIndex++;
+          return item;
+          //adding static id for elements since it will be changed afterward
+        }))
+    );
+  },
+  methods: {
+    removeData: function (data) {
+      this.requests = _.without(this.requests, data);
+    },
+    editReq: function (id, field, text) {
+      const reqIndex = _.findIndex(this.requests, {
+        reqIndex: id,
+      });
+      this.requests[reqIndex][field] = text;
+    },
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+[v-cloak] {
+  display: none;
 }
 </style>

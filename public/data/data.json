@@ -1,0 +1,38 @@
+[
+    {
+      "classCode": "COS20007",
+      "assignmentValue": 60000,
+      "assignmentName": "Iteration 7: Paths",
+      "student": "Donkey",
+      "receivedDate": "2017-07-24 08:30",
+      "assignmentNotes": "Finish iteration 7 with provided source code up to iteration 6; language: C#",
+      "method": "C#"
+    },
+    {
+      "classCode": "COS10009",
+      "assignmentValue": 120000,
+      "assignmentName": "Major Task: Music Player P level",
+      "student": "Sandwich",
+      "receivedDate": "2017-07-22 15:50",
+      "assignmentNotes": "Build from scratch, using ./input_function and follow intro's instructions",
+      "method": "Ruby"
+    },
+    {
+      "classCode": "COS10026",
+      "assignmentValue": 200000,
+      "assignmentName": "Computer Inquiry Project - Group Assignment",
+      "student": "Muffin  ",
+      "receivedDate": "2017-07-21 9:15",
+      "assignmentNotes": "Finish Management.PHP and push to github as a part of teamwork assignment",
+      "method": "PHP"
+    },
+    {
+      "classCode": "COS10004",
+      "assignmentValue": 500000,
+      "assignmentName": "Assign 1 Music Player",
+      "student": "Prefer not to say",
+      "receivedDate": "2017-07-20 15:30",
+      "assignmentNotes": "Aimed for HD level: 80+, follow provided rubric, dangerous lecturer",
+      "method": "Logisim Evolution"
+    }
+  ]
