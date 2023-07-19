@@ -2,6 +2,7 @@
   <div id="name-app" class="container">
     <div class="row justify-content-center">
       <add-request @add="addItem" />
+      <search-request />
       <request-list
         :requests="requests"
         @remove="removeData"
@@ -15,6 +16,7 @@
 //use for import from file export multiple modules
 import RequestList from "./components/RequestList.vue";
 import AddRequest from "./components/AddRequest.vue";
+import SearchRequest from "./components/SearchRequest.vue";
 //use for import file export 1 module or catch the default export; .vue is optional
 import axios from "axios";
 import _ from "lodash";
@@ -31,6 +33,7 @@ export default {
   components: {
     RequestList,
     AddRequest,
+    SearchRequest,
   },
   mounted() {
     axios.get("./data/data.json").then(
